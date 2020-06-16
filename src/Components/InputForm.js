@@ -2,40 +2,49 @@ import React, { useState, useEffect } from "react";
 
 const Form = props => {
   // console.log("props, memberToEdit form.js->",props.memberToEdit);
-  let startMember = {
-    id: Date.now(),
+  let startItem = {
     name: "",
-    email: "",
-    role: ""
+    category: "",
+    id: uniqueID(),
+    purchased: false
   };
 
   // if(props.memberToEdit !== undefined){
   //     startMember = props.membeToEdit;
   // };
-
-  const [teamMember, setTeamMember] = useState(startMember);
+  function uniqueID() {
+    return (
+      "_" +
+      (
+        Number(String(Math.random()).slice(2)) +
+        Date.now() +
+        Math.round(Date.now())
+      ).toString(36)
+    );
+  }
+  const [item, setItem] = useState(startItem);
 
   useEffect(() => {
     // const memberObj = storedTeam.find(element => element.id === Number(props.memberToEdic));
     // console.log("Form.js memberToEdit->",props.memberToEdit);
-    if (props.memberToEdit !== undefined) {
-      setTeamMember(props.memberToEdit);
+    if (props.itemToEdit !== undefined) {
+      setItem(props.itemToEdit);
     }
-  }, [props.memberToEdit]);
+  }, [props.itemToEdit]);
 
   const changeHandler = event => {
-    setTeamMember({ ...teamMember, [event.target.name]: event.target.value });
+    setItem({ ...item, [event.target.name]: event.target.value });
   };
   const submitHandler = event => {
     event.preventDefault();
     if (props.isEditing) {
-      setTeamMember(props.memberToEdit);
-      props.editMember(teamMember);
-      alert("Yes we're editing a Member!");
+      setItem(props.itemToEdit);
+      props.editItem(item);
+      alert("Yes we're editing an Item!");
       return;
     }
-    props.addMember(teamMember);
-    setTeamMember({ name: "", email: "", role: "", id: Date.now() });
+    props.addMember(item);
+    setItem({ name: "", category: "", purchased: false, id: uniqueID() });
   };
 
   return (
@@ -49,22 +58,22 @@ const Form = props => {
         label="name"
         type="text"
         placeholder="Enter Name"
-        value={teamMember.name}
+        value={item.name}
         onChange={changeHandler}
       />
       <p />
-      <label htmlFor="email">Email: </label>
+      <label htmlFor="category">Category: </label>
       <input
-        id="email"
-        name="email"
-        label="email"
+        id="category"
+        name="category"
+        label="category"
         type="text"
-        placeholder="Enter Email"
-        value={teamMember.email}
+        placeholder="Enter category"
+        value={item.category}
         onChange={changeHandler}
       />
       <p />
-      <label htmlFor="role">Role: </label>
+      {/* <label htmlFor="role">Role: </label>
       <input
         id="role"
         name="role"
@@ -73,7 +82,7 @@ const Form = props => {
         placeholder="Enter Role"
         value={teamMember.role}
         onChange={changeHandler}
-      />
+      /> */}
       <p />
       <button>Click To Submit</button>
     </form>
