@@ -8,9 +8,11 @@ const Form = props => {
     email: "",
     role: ""
   };
+
   // if(props.memberToEdit !== undefined){
   //     startMember = props.membeToEdit;
   // };
+
   const [teamMember, setTeamMember] = useState(startMember);
 
   useEffect(() => {
