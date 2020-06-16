@@ -7,7 +7,7 @@ const GroceryList = props => {
   console.log("props from groceryList.js->", props);
   return (
     <div className="shopping-list">
-      {props.groceries.map(item => (
+      {props.list.map(item => (
         <Item
           key={item.id}
           item={item}
