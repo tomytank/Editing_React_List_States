@@ -24,6 +24,7 @@ export default function App() {
 
   return (
     <div className="App">
+      <InputForm />
       <ItemsList list={list} />
 
       {/* <h1>Hello CodeSandbox</h1>
