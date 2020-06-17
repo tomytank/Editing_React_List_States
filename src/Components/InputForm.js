@@ -50,7 +50,7 @@ const Form = props => {
   return (
     // <div>
     //     <p>Form is here</p>
-    <form onSubmit={submitHandler}>
+    <form className="form-input" onSubmit={submitHandler}>
       <label htmlFor="name">Name: </label>
       <input
         id="name"
