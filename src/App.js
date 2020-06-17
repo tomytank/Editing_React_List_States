@@ -9,6 +9,7 @@ import "./styles.css";
 import InputForm from "./Components/InputForm";
 import Settings from "./Components/Settings";
 import ItemsList from "./Components/ItemsList";
+import PageHeader from "./Components/PageHeader";
 
 export default function App() {
   const [listItem, setListItem] = useState();
@@ -24,7 +25,12 @@ export default function App() {
 
   return (
     <div className="App">
-      <InputForm />
+      <p />
+      <div>
+        {" "}
+        {/* <InputForm className="" /> */}
+        <PageHeader />
+      </div>
       <ItemsList list={list} />
 
       {/* <h1>Hello CodeSandbox</h1>

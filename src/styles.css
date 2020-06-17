@@ -37,6 +37,8 @@ span {
   justify-content: space-between;
   align-items: center;
 }
+.new-header {
+}
 h1 {
   text-align: left;
 }
@@ -61,6 +63,7 @@ h1 {
   background-color: #d17d7c;
   text-decoration: line-through;
 }
+
 form {
   width: 50%;
   display: flex;
@@ -94,4 +97,9 @@ input::placeholder {
 
 .clear-btn {
   margin-top: 16px;
+}
+
+.form-input {
+  width: 100%;
+  height: 100%;
 }
