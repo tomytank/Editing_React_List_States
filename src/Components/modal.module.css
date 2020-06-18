@@ -10,3 +10,14 @@
   flex-direction: column;
   background-color: tomato;
 }
+
+
+.modalInput {
+  width: 50vw;
+  height: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+

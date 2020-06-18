@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 //import SimpleModal from "./ModalInputForm";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+
+
+//import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 //import Modal from "@material-ui/core/Modal";
 import Modal from "./ModalForm";
 
 import uniqueID from "./uniqueID";
 function PageHeader(props) {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const toggleModal = () => {
-    setModalOpen(!modalOpen);
-  };
 
   const itemUniqueID = uniqueID();
   const newItemToAdd = {
@@ -27,12 +24,25 @@ function PageHeader(props) {
     //return <SimpleModal />;
 
   };
+
+  /*****Modal input screen******/
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+  };
+  /*****Close Modal input screen******/
+
   const changeHandler = () => {};
   const handleOpen = () => {};
+
   return (
     <div>
       <h1 className="header new-header shopping-list">Shopping List</h1>
-      {modalOpen ? <Modal toggleModal={toggleModal} /> : null}
+      {modalOpen ? (
+        <Modal toggleModal={toggleModal} inputNewItem={props.inputNewItem} />
+      ) : null}
+
       <button onChange={changeHandler} onClick={toggleModal}>
         Add an Item
       </button>
