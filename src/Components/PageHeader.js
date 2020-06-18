@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 
-function PageHeader() {
-  const onClickHandler = () => {};
-  const onChangeHandler = () => {};
+function PageHeader(props) {
+  const clickHandler = event => {
+    event.preventDefault();
+    props.inputNewItem();
+  };
+  const changeHandler = () => {};
 
   return (
     <div>
       <h1 className="header new-header shopping-list">Shopping List</h1>
-      <p />
-      <button onChange={onChangeHandler} onClick={onClickHandler}>
+
+      <button onChange={changeHandler} onClick={clickHandler}>
         Add an Item
       </button>
       <p />
