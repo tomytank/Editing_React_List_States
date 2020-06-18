@@ -15,6 +15,8 @@ export default function App() {
   const [listItem, setListItem] = useState();
   const [list, setList] = useState(data);
   console.log(list);
+  const inputNewItem = newItem => {};
+
   toggleItem = itemID => {};
 
   clearItem = itemID => {};
