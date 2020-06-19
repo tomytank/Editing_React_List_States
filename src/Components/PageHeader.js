@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 //import SimpleModal from "./ModalInputForm";
 
+
 //import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 //import Modal from "@material-ui/core/Modal";
 import ModalForm from "./ModalForm";
@@ -22,13 +23,13 @@ function PageHeader(props) {
   //};
 
   /*****Modal input screen state for open/close******/
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const toggleModal = () => {
     setModalOpen(!modalOpen);
   };
   /*****Close Modal input screen******/
-
   //const changeHandler = () => {};
 
   //const handleOpen = () => {};

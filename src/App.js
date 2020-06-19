@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
+
 //import Modal from "@material-ui/core/Modal";
 //import SimpleModal from "./Components/ModalInputForm";
 
 //import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 import data from "./data";
 import "./styles.css";
@@ -37,6 +39,7 @@ export default function App() {
       }
       return item;
     });
+
   };
 
   clearItem = itemID => {
@@ -55,6 +58,7 @@ export default function App() {
       <div>
         {" "}
         <PageHeader inputNewItem={inputNewItem} />
+
       </div>
       <ItemsList
         list={list}
