@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 
 import uniqueID from "./uniqueID";
@@ -59,6 +60,7 @@ export default function Modal(props) {
       <p />
       <button onClick={submitHandler}>Add Item</button>
       <button onClick={props.toggleModal}>Close</button>
+
     </div>
   );
 }
