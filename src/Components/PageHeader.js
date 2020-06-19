@@ -3,27 +3,25 @@ import React, { useState, useEffect } from "react";
 
 //import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 //import Modal from "@material-ui/core/Modal";
-import Modal from "./ModalForm";
+import ModalForm from "./ModalForm";
 
 import uniqueID from "./uniqueID";
 function PageHeader(props) {
-  const itemUniqueID = uniqueID();
-  const newItemToAdd = {
-    name: "",
-    category: "",
-    id: itemUniqueID,
-    purchased: false
-  };
-  const [newItem, setNewItem] = useState(newItemToAdd);
   console.log("props from pageheader.js", props);
-  const clickHandler = event => {
-    event.preventDefault();
+  // const itemUniqueID = uniqueID();
+  // const newItemToAdd = {
+  //   name: "",
+  //   category: "",
+  //   id: itemUniqueID,
+  //   purchased: false
+  // };
+  //const [newItem, setNewItem] = useState(newItemToAdd);
 
-    //props.inputNewItem();
-    //return <SimpleModal />;
-  };
+  //const clickHandler = event => {
+  //event.preventDefault();
+  //};
 
-  /*****Modal input screen******/
+  /*****Modal input screen state for open/close******/
   const [modalOpen, setModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -31,19 +29,20 @@ function PageHeader(props) {
   };
   /*****Close Modal input screen******/
 
-  const changeHandler = () => {};
+  //const changeHandler = () => {};
 
-  const handleOpen = () => {};
+  //const handleOpen = () => {};
 
   return (
     <div>
       <h1 className="header new-header shopping-list">Shopping List</h1>
       {modalOpen ? (
-        <Modal toggleModal={toggleModal} inputNewItem={props.inputNewItem} />
+        <ModalForm
+          toggleModal={toggleModal}
+          inputNewItem={props.inputNewItem}
+        />
       ) : null}
-      <button onChange={changeHandler} onClick={toggleModal}>
-        Add an Item
-      </button>
+      <button onClick={toggleModal}>Add an Item</button>
       <p />
     </div>
   );

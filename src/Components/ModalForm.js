@@ -11,34 +11,24 @@ export default function Modal(props) {
     id: uniqueID(),
     purchased: false
   };
-
   const [item, setItem] = useState(startItem);
-  // {props.inputNewItem({
-  //   name: item.name,
-  //   category: item.category
-  // })}
-
-  const newItemClick = event => {
-    event.preventDefault();
-  };
   const submitHandler = event => {
     event.preventDefault();
-    if (props.isEditing) {
-      setItem(props.itemToEdit);
-      props.editItem(item);
-      alert("Yes we're editing an Item!");
-      return;
-    }
-    props.addMember(item);
-    setItem({ name: "", category: "", purchased: false, id: uniqueID() });
+    console.log("Submit Handlier clicked");
+    startItem.name = item.name;
+    startItem.category = item.category;
+    props.inputNewItem(startItem);
   };
+  //props.addMember(item);
+  //setItem({ name: "", category: "", purchased: false, id: uniqueID() });
+  //};
   const changeHandler = event => {
     setItem({ ...item, [event.target.name]: event.target.value });
   };
   return (
     <div className={styles.modalContainer}>
       <h1>Input new Item</h1>
-      <form className={styles.modalInput} onSubmit={submitHandler}>
+      <form className={styles.modalInput}>
         <div>
           <label htmlFor="name">Name: </label>
           <input
@@ -67,8 +57,9 @@ export default function Modal(props) {
         </div>
       </form>
       <p />
-      <button onClick={newItemClick}>Add Item</button>
+      <button onClick={submitHandler}>Add Item</button>
       <button onClick={props.toggleModal}>Close</button>
     </div>
   );
 }
+//<button onClick={newItemClick}>Add Item</button>

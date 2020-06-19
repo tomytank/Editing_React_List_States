@@ -22,23 +22,30 @@ export default function App() {
 
   /****input new item function to be passed as props.****/
   const inputNewItem = newItem => {
-    const itemUniqueID = uniqueID();
-
-    //console.log("Current itemUniqueID is ", itemUniqueID);
-    // const newItemToAdd = {
-    //   name: newItem.name,
-    //   category: newItem.category,
-    //   id: itemUniqueID,
-    //   purchased: false
-    // };
-    //const [itemToAdd, setItemToAdd] = useState(newItemToAdd);
+    console.log("new item from App.js added", newItem);
+    if (newItem !== undefined) {
+      setList([...list, newItem]);
+    }
+  };
+  toggleItem = itemID => {
+    console.log("Toggle Item clicked from App.js", itemID);
+    console.log(list);
+    list.map(item => {
+      if (itemID === item.id) {
+        console.log("item.id=", item.id);
+        return setList({ ...item, purchased: !item.purchased });
+      }
+      return item;
+    });
   };
 
-  toggleItem = itemID => {};
+  clearItem = itemID => {
+    console.log("ClearItem was clicked->App.js", itemID);
+  };
 
-  clearItem = itemID => {};
-
-  editItem = itemID => {};
+  editItem = itemID => {
+    console.log("EditItem was clicked->App.js", itemID);
+  };
 
   addItem = itemID => {};
 
@@ -47,9 +54,14 @@ export default function App() {
       <p />
       <div>
         {" "}
-        <PageHeader inputNewItem={inputNewItem()} />
+        <PageHeader inputNewItem={inputNewItem} />
       </div>
-      <ItemsList list={list} />
+      <ItemsList
+        list={list}
+        toggleItem={toggleItem}
+        editItem={editItem}
+        clearItem={clearItem}
+      />
     </div>
   );
 }
