@@ -2,9 +2,9 @@ import React from "react";
 
 import Item from "./Item";
 //functional component
-const GroceryList = props => {
+const ItemList = props => {
   //const sortedList = props.groceries.sort((a, b) => a.purchased -b.purchased);
-  console.log("props from groceryList.js->", props);
+  console.log("props from ItemList.js->", props);
   return (
     <div className="shopping-list">
       {props.list.map(item => (
@@ -24,4 +24,4 @@ const GroceryList = props => {
   );
 };
 
-export default GroceryList;
+export default ItemList;
