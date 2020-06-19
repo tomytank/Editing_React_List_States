@@ -30,13 +30,15 @@ export default function App() {
   toggleItem = itemID => {
     console.log("Toggle Item clicked from App.js", itemID);
     console.log(list);
-    list.map(item => {
+    const newList = list.map(item => {
       if (itemID === item.id) {
         console.log("item.id=", item.id);
-        return setList({ ...item, purchased: !item.purchased });
+        return { ...item, purchased: !item.purchased };
+        //console.log("after setting purchased", list);
       }
       return item;
     });
+    setList(newList);
   };
 
   clearItem = itemID => {
