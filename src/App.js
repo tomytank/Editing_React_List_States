@@ -16,10 +16,17 @@ import PageHeader from "./Components/PageHeader";
 import uniqueID from "./Components/uniqueID";
 
 export default function App() {
+  //            const sortOrder = "natural";
+  const [sortOrder, setSortOrder] = useState("natural");
   //const [listItem, setListItem] = useState();
   const [list, setList] = useState(data);
   let newList = [];
   console.log("List from App.js", list);
+
+  const settingSortOrder = setNewSortOrder => {
+    console.log("From App.js new sortorder will be ", setNewSortOrder);
+    setSortOrder(setNewSortOrder);
+  };
 
   /****input new item function to be passed as props.****/
   const inputNewItem = newItem => {
@@ -70,6 +77,9 @@ export default function App() {
         toggleItem={toggleItem}
         editItem={editItem}
         clearItem={clearItem}
+        /***Sending sort order state to ItemsList */
+        settingSortOrder={settingSortOrder}
+        sortOrder={sortOrder}
       />
     </div>
   );

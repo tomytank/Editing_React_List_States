@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 import uniqueID from "./uniqueID";
@@ -13,16 +12,19 @@ export default function Modal(props) {
     purchased: false
   };
   const [item, setItem] = useState(startItem);
+
   const submitHandler = event => {
     event.preventDefault();
     console.log("Submit Handlier clicked");
     startItem.name = item.name;
     startItem.category = item.category;
     props.inputNewItem(startItem);
+    setItem({ name: "", category: "", purchased: false, id: uniqueID() });
   };
   //props.addMember(item);
   //setItem({ name: "", category: "", purchased: false, id: uniqueID() });
   //};
+
   const changeHandler = event => {
     setItem({ ...item, [event.target.name]: event.target.value });
   };
@@ -60,7 +62,6 @@ export default function Modal(props) {
       <p />
       <button onClick={submitHandler}>Add Item</button>
       <button onClick={props.toggleModal}>Close</button>
-
     </div>
   );
 }

@@ -1,34 +1,18 @@
 import React, { useState, useEffect } from "react";
 
+import uniqueID from "./uniqueID";
 //import Modal from "@material-ui/core/Modal";
 
 const Form = props => {
-  // console.log("props, memberToEdit form.js->",props.memberToEdit);
   let startItem = {
     name: "",
     category: "",
     id: uniqueID(),
     purchased: false
   };
-
-  // if(props.memberToEdit !== undefined){
-  //     startMember = props.membeToEdit;
-  // };
-  function uniqueID() {
-    return (
-      "_" +
-      (
-        Number(String(Math.random()).slice(2)) +
-        Date.now() +
-        Math.round(Date.now())
-      ).toString(36)
-    );
-  }
   const [item, setItem] = useState(startItem);
 
   useEffect(() => {
-    // const memberObj = storedTeam.find(element => element.id === Number(props.memberToEdic));
-    // console.log("Form.js memberToEdit->",props.memberToEdit);
     if (props.itemToEdit !== undefined) {
       setItem(props.itemToEdit);
     }
@@ -75,16 +59,6 @@ const Form = props => {
         onChange={changeHandler}
       />
       <p />
-      {/* <label htmlFor="role">Role: </label>
-      <input
-        id="role"
-        name="role"
-        label="role"
-        type="text"
-        placeholder="Enter Role"
-        value={teamMember.role}
-        onChange={changeHandler}
-      /> */}
       <p />
       <button>Click To Submit</button>
     </form>
