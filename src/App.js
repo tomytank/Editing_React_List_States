@@ -18,6 +18,7 @@ import uniqueID from "./Components/uniqueID";
 export default function App() {
   //const [listItem, setListItem] = useState();
   const [list, setList] = useState(data);
+  let newList = [];
   console.log("List from App.js", list);
 
   /****input new item function to be passed as props.****/
@@ -30,7 +31,7 @@ export default function App() {
   toggleItem = itemID => {
     console.log("Toggle Item clicked from App.js", itemID);
     console.log(list);
-    const newList = list.map(item => {
+    newList = list.map(item => {
       if (itemID === item.id) {
         console.log("item.id=", item.id);
         return { ...item, purchased: !item.purchased };
@@ -41,9 +42,17 @@ export default function App() {
     setList(newList);
   };
   clearItem = itemID => {
+    console.log("List from clearitem", list);
     console.log("ClearItem was clicked->App.js", itemID);
+    newList = list.filter(item => {
+      if (itemID !== item.id) {
+        console.log("Item ", itemID, " removed!");
+        return { ...newList, item };
+      }
+    });
+    //console.log("newList is: ", newList);
+    setList(newList);
   };
-
   editItem = itemID => {
     console.log("EditItem was clicked->App.js", itemID);
   };
