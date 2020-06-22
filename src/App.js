@@ -41,9 +41,10 @@ export default function App() {
     });
     setList(newList);
   };
+  /***Removes individual item from list*****/
   clearItem = itemID => {
-    console.log("List from clearitem", list);
-    console.log("ClearItem was clicked->App.js", itemID);
+    //console.log("List from clearitem", list);
+    //console.log("ClearItem was clicked->App.js", itemID);
     newList = list.filter(item => {
       if (itemID !== item.id) {
         console.log("Item ", itemID, " removed!");
@@ -56,8 +57,6 @@ export default function App() {
   editItem = itemID => {
     console.log("EditItem was clicked->App.js", itemID);
   };
-
-  addItem = itemID => {};
 
   return (
     <div className="App">

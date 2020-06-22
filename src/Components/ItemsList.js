@@ -20,6 +20,15 @@ const ItemList = props => {
       <button className="clear-btn" onClick={props.deleteItem}>
         Clear purchased
       </button>
+
+      <div>
+        <br />
+        <p>
+          <p>Sort by: </p>
+          <button>Category</button>
+          <button>Date</button>
+        </p>
+      </div>
     </div>
   );
 };

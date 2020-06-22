@@ -9,31 +9,31 @@ export default [
   },
   {
     name: "Tortillas",
-    category: "Fruit",
+    category: "Bread",
     id: 124,
     purchased: false
   },
   {
     name: "Milk",
-    category: "Fruit",
+    category: "Dairy",
     id: 1235,
     purchased: false
   },
   {
     name: "Pizza Sauce",
-    category: "Fruit",
+    category: "Vegtables",
     id: 1246,
     purchased: false
   },
   {
     name: "Raw Honey",
-    category: "Fruit",
+    category: "Condiment",
     id: 1237,
     purchased: false
   },
   {
     name: "Granola",
-    category: "Fruit",
+    category: "Grain",
     id: 1248,
     purchased: false
   }
