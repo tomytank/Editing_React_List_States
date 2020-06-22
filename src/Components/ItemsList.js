@@ -5,12 +5,12 @@ import Item from "./Item";
 const ItemList = props => {
   //const sortedList = props.groceries.sort((a, b) => a.purchased -b.purchased);
   console.log("props from ItemList.js->", props);
-  console.log("Current sort order is: ", props.sortOrder);
+  console.log("Current sort order ItemList.js is: ", props.sortOrder);
   //const listSort = props.sortOrder;
   /*****listSort can be natural, date, or category   */
   return (
     <div className="shopping-list">
-      {props.list.map(item => (
+      {/***this is 'natural' sort */ props.list.map(item => (
         <Item
           key={item.id}
           item={item}
