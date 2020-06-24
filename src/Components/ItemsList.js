@@ -8,6 +8,19 @@ const ItemList = props => {
   console.log("Current sort order ItemList.js is: ", props.sortOrder);
   //const listSort = props.sortOrder;
   /*****listSort can be natural, date, or category   */
+  const property = 0;
+  const sortList = property => {
+    const sortOrder = 1;
+    if (property[0] === "-") {
+      sortOrder = -1;
+      property = property.substr(1);
+    }
+    return function(a, b) {
+      let result =
+        a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+    };
+  };
+  console.log("sorted list", props.list.sort(sortList(props.list.name)));
   return (
     <div className="shopping-list">
       {/***this is 'natural' sort */ props.list.map(item => (
