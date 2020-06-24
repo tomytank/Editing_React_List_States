@@ -11,16 +11,18 @@ const ItemList = props => {
 
   const sortList = property => {
     //let property = "";
+    props.settingSortOrder("category");
     const sortOrder = 1;
     // if (property[0] === "-") {
     //   sortOrder = -1;
     //   property = property.substr(1);
     // }
-    return function(a, b) {
+    return function(a.category, b.category) {
       let result =
         a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
-    };
-    console.log("sorted list", props.list.sort(sortList(props.list.name)));
+        console.log("sorted list", props.list.sort(sortList(props.list.name)));
+      };
+    
   };
   return (
     <div className="shopping-list">
@@ -42,9 +44,8 @@ const ItemList = props => {
         <br />
         <p>
           <p>Sort by: </p>
-          <button onClick={() => {
-            props.settingSortOrder("category");
-          sortList(props.list);
+          <button onClick={() => 
+          sortList(props.list)
           }
           >
             Category
