@@ -74,6 +74,7 @@ export default function App() {
       </div>
       <ItemsList
         list={list}
+        setList={setList}
         toggleItem={toggleItem}
         editItem={editItem}
         clearItem={clearItem}
