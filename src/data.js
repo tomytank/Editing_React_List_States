@@ -26,7 +26,7 @@ export default [
     name: "Pizza Sauce",
     category: "Vegtables",
     id: 1246,
-    date: new Date("2020-06-12"),
+    date: new Date("2020-06-1"),
     purchased: false
   },
   {

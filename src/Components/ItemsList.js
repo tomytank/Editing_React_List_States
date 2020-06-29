@@ -8,11 +8,19 @@ const ItemList = props => {
   console.log("Current sort order ItemList.js is: ", props.sortOrder);
   //const listSort = props.sortOrder;
   /*****listSort can be natural, date, or category   */
-  const sortedList = props.list.sort((a, b) => a.date - a.date);
-  console.log("sortedList ", sortedList);
-
+  const sortedList = props.list.sort((a, b) =>
+    a.date < b.date ? -1 : a.date > b.date ? 1 : 0
+  );
+  //a.date < a.date);
+  console.log("sortedList from ItemList", sortedList);
   const sortList = property => {
     //let property = "";
+    // props.list.map(item =>
+    // console.log("sortList function", item.name, item.date)
+    //);
+
+    let newList = props.list.slice().sort(props.list.date);
+    console.log("sorted list from sortList function-newList", newList);
     props.settingSortOrder("category");
     const sortOrder = 1;
     // if (property[0] === "-") {
@@ -22,8 +30,7 @@ const ItemList = props => {
     return function(a, b) {
       let result =
         a.category < b.category ? -1 : a.category > b.category ? 1 : 0;
-      console.log("result of sort", result);
-      console.log("sorted list", props.list.sort(sortList(props.list.name)));
+      console.log("result of sort sortList function", result);
     };
   };
 
@@ -47,8 +54,8 @@ const ItemList = props => {
       <div>
         <br />
         <p>
-          <h3>Sort by: </h3>
-          <button onClick={() => sortList(props.list)}>Category</button>
+          Sort by:
+          <button onClick={() => sortList()}>Category</button>
           <button onClick={() => props.settingSortOrder("date")}>Date</button>
           <button onClick={() => props.settingSortOrder("natural")}>
             Natural
