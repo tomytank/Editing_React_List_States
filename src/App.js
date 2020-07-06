@@ -22,6 +22,7 @@ export default function App() {
   //const [listItem, setListItem] = useState();
   const [list, setList] = useState(data);
   const [storedList, setStoredList] = useLocalStorage("ListStored");
+
   //setStoredList(list);
   //setList(useLocalStorage("ListStored"));
   let newList = [];
