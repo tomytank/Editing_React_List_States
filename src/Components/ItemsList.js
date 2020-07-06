@@ -13,7 +13,8 @@ const ItemList = props => {
 
   const sortedList = props.list.sort((a, b) => {
     const newSort = props.sortOrder;
-    a.newSort < b.newSort ? -1 : a.newSort > b.newSort ? 1 : 0;
+    a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+    // console.log("newsort value is: ", a.date);
   });
   const sortList = property => {
     props.settingSortOrder(property);
@@ -22,9 +23,10 @@ const ItemList = props => {
       props.sortOrder,
       property
     );
-    const sortedList = props.list.sort((a, b) =>
-      a.property < b.property ? -1 : a.property > b.property ? 1 : 0
-    );
+    const sortedList = props.list.sort((a, b) => {
+      a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+      console.log("sortedList is ", a[property]);
+    });
     props.setList(sortedList);
     console.log("sortedList from ItemList", sortedList);
     //let property = "";

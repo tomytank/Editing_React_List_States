@@ -9,6 +9,7 @@ export default function Modal(props) {
     name: "",
     category: "",
     id: uniqueID(),
+    date: new Date(),
     purchased: false
   };
   const [item, setItem] = useState(startItem);
@@ -18,8 +19,17 @@ export default function Modal(props) {
     console.log("Submit Handlier clicked");
     startItem.name = item.name;
     startItem.category = item.category;
+    const newDate = item.date === "" ? new Date() : new Date(item.date);
+    //console.log("newDate from ModalForm is", newDate);
+    startItem.date = newDate;
     props.inputNewItem(startItem);
-    setItem({ name: "", category: "", purchased: false, id: uniqueID() });
+    setItem({
+      name: "",
+      category: "",
+      date: "",
+      purchased: false,
+      id: uniqueID()
+    });
   };
   //props.addMember(item);
   //setItem({ name: "", category: "", purchased: false, id: uniqueID() });
@@ -55,6 +65,18 @@ export default function Modal(props) {
             type="text"
             placeholder="Enter category"
             value={item.category}
+            onChange={changeHandler}
+          />
+        </div>
+        <div>
+          <label htmlFor="category">Date: </label>
+          <input
+            id="date"
+            name="date"
+            label="date"
+            type="date"
+            placeholder="Enter date"
+            value={item.date}
             onChange={changeHandler}
           />
         </div>
