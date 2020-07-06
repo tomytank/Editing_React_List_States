@@ -54,7 +54,7 @@ export default function App() {
     //console.log("ClearItem was clicked->App.js", itemID);
     newList = list.filter(item => {
       if (itemID !== item.id) {
-        console.log("Item ", itemID, " removed!");
+        console.log("Item ", itemID, itemID.name, " removed!");
         return { ...newList, item };
       }
     });
