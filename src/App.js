@@ -13,7 +13,7 @@ import "./styles.css";
 //import Settings from "./Components/Settings";
 import ItemsList from "./Components/ItemsList";
 import PageHeader from "./Components/PageHeader";
-import useLocalStorage from "./Hooks/useLocalStorage";
+import { useLocalStorage } from "./Hooks/useLocalStorage";
 //import uniqueID from "./Components/uniqueID";
 
 export default function App() {
@@ -21,7 +21,9 @@ export default function App() {
   const [sortOrder, setSortOrder] = useState("date");
   //const [listItem, setListItem] = useState();
   const [list, setList] = useState(data);
-  const [localList, setLocalList] = useLocalStorage("theCurrentList");
+  const [storedList, setStoredList] = useLocalStorage("ListStored");
+  //setStoredList(list);
+  //setList(useLocalStorage("ListStored"));
   let newList = [];
   //console.log("List from App.js", list);
 
@@ -35,6 +37,7 @@ export default function App() {
     //console.log("new item from App.js added", newItem);
     if (newItem !== undefined) {
       setList([...list, newItem]);
+      setStoredList([...storedList, newItem]);
     }
   };
   toggleItem = itemID => {
@@ -49,6 +52,7 @@ export default function App() {
       return item;
     });
     setList(newList);
+    setStoredList(newList);
   };
   /***Removes individual item from list*****/
   clearItem = itemID => {
@@ -62,6 +66,7 @@ export default function App() {
     });
     //console.log("newList is: ", newList);
     setList(newList);
+    setStoredList(newList);
   };
   editItem = itemID => {
     console.log("EditItem was clicked->App.js", itemID);
@@ -77,6 +82,8 @@ export default function App() {
       <ItemsList
         list={list}
         setList={setList}
+        storedList={storedList}
+        setStoredList={setStoredList}
         toggleItem={toggleItem}
         editItem={editItem}
         clearItem={clearItem}
