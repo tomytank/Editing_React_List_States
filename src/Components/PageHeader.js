@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 //import SimpleModal from "./ModalInputForm";
 
-
 //import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 //import Modal from "@material-ui/core/Modal";
 import ModalForm from "./ModalForm";
 
 import uniqueID from "./uniqueID";
 function PageHeader(props) {
-  console.log("props from pageheader.js", props);
+  //console.log("props from pageheader.js", props);
   // const itemUniqueID = uniqueID();
   // const newItemToAdd = {
   //   name: "",
@@ -37,6 +36,10 @@ function PageHeader(props) {
   return (
     <div>
       <h1 className="header new-header shopping-list">Shopping List</h1>
+      <h2 style={{ float: "left", margin: "10px" }}>
+        Sorted by {props.sortOrder}
+      </h2>
+
       {modalOpen ? (
         <ModalForm
           toggleModal={toggleModal}

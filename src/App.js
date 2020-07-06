@@ -17,11 +17,11 @@ import uniqueID from "./Components/uniqueID";
 
 export default function App() {
   //            const sortOrder = "natural";
-  const [sortOrder, setSortOrder] = useState("natural");
+  const [sortOrder, setSortOrder] = useState("date");
   //const [listItem, setListItem] = useState();
   const [list, setList] = useState(data);
   let newList = [];
-  console.log("List from App.js", list);
+  //console.log("List from App.js", list);
 
   const settingSortOrder = setNewSortOrder => {
     console.log("From App.js new sortorder will be ", setNewSortOrder);
@@ -70,7 +70,7 @@ export default function App() {
       <p />
       <div>
         {" "}
-        <PageHeader inputNewItem={inputNewItem} />
+        <PageHeader inputNewItem={inputNewItem} sortOrder={sortOrder} />
       </div>
       <ItemsList
         list={list}

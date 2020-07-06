@@ -4,7 +4,15 @@ const edit = "Edit";
 const clear = "Clear";
 
 const Item = props => {
-  const date = props.date.toLocaleDateString(); //Date.parse(props.date);
+  const itemCategory = props.category;
+  //const date = props.date.toLocaleDateString();
+  let formatted_date =
+    props.date.getDate() +
+    "." +
+    (props.date.getMonth() + 1) +
+    "." +
+    props.date.getFullYear();
+  //Date.parse(props.date);
   //console.log("props from item.js->", props);
   return (
     <div className={`item${props.item.purchased ? " purchased" : ""}`}>
@@ -14,8 +22,13 @@ const Item = props => {
         }}
       >
         {props.item.name}
+        <span style={{ float: "right", margin: "5px" }}>
+          {itemCategory}&nbsp;
+        </span>
       </p>
-      <span style={{ float: "left", margin: "10px" }}>{date}&nbsp;</span>
+      <span style={{ float: "left", margin: "10px" }}>
+        {formatted_date}&nbsp;
+      </span>
       <span
         onClick={() => props.clearItem(props.item.id)}
         style={{ float: "right", margin: "10px" }}
