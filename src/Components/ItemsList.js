@@ -48,7 +48,7 @@ const ItemList = props => {
       <div>
         <br />
         <p>
-          Sort by:
+          Sort by:&nbsp;
           <button onClick={() => sortList("category")}>Category</button>
           <button onClick={() => sortList("date")}>Date</button>
           <button onClick={() => sortList("name")}>Name</button>

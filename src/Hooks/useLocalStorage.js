@@ -5,7 +5,7 @@ export const useLocalStorage = key => {
 
   const storedValue = window.localStorage.getItem(key);
   if (!storedValue) {
-    window.localStorage.setItem("team", "");
+    window.localStorage.setItem("shopList", "");
   }
   // console.log("value of storedValue->",(storedValue ? "true": "false"));
 

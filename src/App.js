@@ -9,17 +9,19 @@ import ReactDOM from "react-dom";
 import data from "./data";
 import "./styles.css";
 
-import InputForm from "./Components/InputForm";
-import Settings from "./Components/Settings";
+//import InputForm from "./Components/InputForm";
+//import Settings from "./Components/Settings";
 import ItemsList from "./Components/ItemsList";
 import PageHeader from "./Components/PageHeader";
-import uniqueID from "./Components/uniqueID";
+import useLocalStorage from "./Hooks/useLocalStorage";
+//import uniqueID from "./Components/uniqueID";
 
 export default function App() {
   //            const sortOrder = "natural";
   const [sortOrder, setSortOrder] = useState("date");
   //const [listItem, setListItem] = useState();
   const [list, setList] = useState(data);
+  const [localList, setLocalList] = useLocalStorage("theCurrentList");
   let newList = [];
   //console.log("List from App.js", list);
 
@@ -30,7 +32,7 @@ export default function App() {
 
   /****input new item function to be passed as props.****/
   const inputNewItem = newItem => {
-    console.log("new item from App.js added", newItem);
+    //console.log("new item from App.js added", newItem);
     if (newItem !== undefined) {
       setList([...list, newItem]);
     }
