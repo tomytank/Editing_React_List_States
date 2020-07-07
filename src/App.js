@@ -20,7 +20,11 @@ export default function App() {
   //            const sortOrder = "natural";
   const [sortOrder, setSortOrder] = useState("date");
   //const [listItem, setListItem] = useState();
+  const allData = useLocalStorage("ListStored");
+  console.log("Data is", allData[0]);
+  //const data = allData[0];
   const [list, setList] = useState(data);
+  console.log("The current list is ", list);
   const [storedList, setStoredList] = useLocalStorage("ListStored");
 
   //setStoredList(list);
@@ -32,13 +36,47 @@ export default function App() {
     console.log("From App.js new sortorder will be ", setNewSortOrder);
     setSortOrder(setNewSortOrder);
   };
+  /*******added sortList function from ItemList to App.js */
+  let sortDirection = 1;
+  const sortList = property => {
+    console.log("Current property value ", property);
+    console.log("Current sortOrder value ", sortOrder);
+    console.log("property = sortOrder", property === sortOrder);
+    //let sortDirection = 1;
+    console.log("Sortdirection before negation", sortDirection);
+    if (property === sortOrder) {
+      console.log("property = sortOrder", property === sortOrder);
+      sortDirection = -1 * sortDirection;
+      console.log("sortDirection ", sortDirection);
+    }
+    //sortDirection = -1 * sortDirection;
+    settingSortOrder(property);
+    console.log("sortOrder value changed to ", sortOrder);
 
+    const property2 =
+      property === "date" ? "name" : property === "category" ? "name" : "date";
+    console.log("property2 is ", property2);
+    const sortedList = list.sort((a, b) =>
+      a[property] > b[property]
+        ? sortDirection
+        : a[property] === b[property]
+        ? a[property2] > b[property2]
+          ? sortDirection
+          : -1 * sortDirection
+        : -1 * sortDirection
+    );
+    setList(sortedList);
+    setStoredList(sortedList);
+    const currentListIs = sortedList === list;
+    console.log("List sorted from ItemsList ", currentListIs);
+  };
+  /****End sortList funcion */
   /****input new item function to be passed as props.****/
   const inputNewItem = newItem => {
     //console.log("new item from App.js added", newItem);
     if (newItem !== undefined) {
       setList([...list, newItem]);
-      setStoredList([...storedList, newItem]);
+      setStoredList([...list, newItem]);
     }
   };
   toggleItem = itemID => {
@@ -91,6 +129,7 @@ export default function App() {
         /***Sending sort order state to ItemsList */
         settingSortOrder={settingSortOrder}
         sortOrder={sortOrder}
+        sortList={sortList}
       />
     </div>
   );
