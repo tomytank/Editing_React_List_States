@@ -21,11 +21,13 @@ export default function App() {
   const [sortOrder, setSortOrder] = useState("date");
   //const [listItem, setListItem] = useState();
   const allData = useLocalStorage("ListStored");
-  console.log("Data is", allData[0]);
+  //console.log("Data is", allData[0]);
   //const data = allData[0];
   const [list, setList] = useState(data);
-  console.log("The current list is ", list);
+  //console.log("The current list is ", list);
   const [storedList, setStoredList] = useLocalStorage("ListStored");
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentItemEdit, setCurrentItemEdit] = useState();
 
   //setStoredList(list);
   //setList(useLocalStorage("ListStored"));
@@ -38,29 +40,33 @@ export default function App() {
   };
   /*******added sortList function from ItemList to App.js */
   let sortDirection = 1;
-  const sortList = property => {
-    console.log("Current property value ", property);
-    console.log("Current sortOrder value ", sortOrder);
-    console.log("property = sortOrder", property === sortOrder);
+  const sortList = sortProperty => {
+    //console.log("Current property value ", property);
+    //console.log("Current sortOrder value ", sortOrder);
+    //console.log("property = sortOrder", property === sortOrder);
     //let sortDirection = 1;
-    console.log("Sortdirection before negation", sortDirection);
-    if (property === sortOrder) {
-      console.log("property = sortOrder", property === sortOrder);
+    //console.log("Sortdirection before negation", sortDirection);
+    if (sortProperty === sortOrder) {
+      //console.log("property = sortOrder", property === sortOrder);
       sortDirection = -1 * sortDirection;
-      console.log("sortDirection ", sortDirection);
+      //console.log("sortDirection ", sortDirection);
     }
     //sortDirection = -1 * sortDirection;
-    settingSortOrder(property);
-    console.log("sortOrder value changed to ", sortOrder);
+    settingSortOrder(sortProperty);
+    //console.log("sortOrder value changed to ", sortOrder);
 
-    const property2 =
-      property === "date" ? "name" : property === "category" ? "name" : "date";
-    console.log("property2 is ", property2);
+    const sortProperty2 =
+      sortProperty === "date"
+        ? "name"
+        : property === "category"
+        ? "name"
+        : "date";
+    //console.log("property2 is ", property2);
     const sortedList = list.sort((a, b) =>
-      a[property] > b[property]
+      a[sortProperty] > b[sortProperty]
         ? sortDirection
-        : a[property] === b[property]
-        ? a[property2] > b[property2]
+        : a[sortProperty] === b[sortProperty]
+        ? a[sortProperty2] > b[sortProperty2]
           ? sortDirection
           : -1 * sortDirection
         : -1 * sortDirection
@@ -68,7 +74,7 @@ export default function App() {
     setList(sortedList);
     setStoredList(sortedList);
     const currentListIs = sortedList === list;
-    console.log("List sorted from ItemsList ", currentListIs);
+    //console.log("List sorted from ItemsList ", currentListIs);
   };
   /****End sortList funcion */
   /****input new item function to be passed as props.****/
@@ -79,9 +85,21 @@ export default function App() {
       setStoredList([...list, newItem]);
     }
   };
+  /*********Edit function
+   Take item clicked, 
+   feed to input form wiht flag of isEditing
+   open input form with details already in place to allow editing
+  ******/
+  editItem = itemID => {
+    //const [isEditing, setIsEditing] = useState(false);
+    setIsEditing(true);
+    setCurrentItemEdit(itemID);
+    console.log("EditItem was clicked->App.js", itemID);
+  };
+
   toggleItem = itemID => {
-    console.log("Toggle Item clicked from App.js", itemID);
-    console.log(list);
+    // console.log("Toggle Item clicked from App.js", itemID);
+    // console.log(list);
     newList = list.map(item => {
       if (itemID === item.id) {
         console.log("item.id=", item.id);
@@ -93,6 +111,7 @@ export default function App() {
     setList(newList);
     setStoredList(newList);
   };
+
   /***Removes individual item from list*****/
   clearItem = itemID => {
     //console.log("List from clearitem", list);
@@ -107,16 +126,18 @@ export default function App() {
     setList(newList);
     setStoredList(newList);
   };
-  editItem = itemID => {
-    console.log("EditItem was clicked->App.js", itemID);
-  };
 
   return (
     <div className="App">
       <p />
       <div>
         {" "}
-        <PageHeader inputNewItem={inputNewItem} sortOrder={sortOrder} />
+        <PageHeader
+          inputNewItem={inputNewItem}
+          sortOrder={sortOrder}
+          isEditing={isEditing}
+          currentItemEdit={currentItemEdit}
+        />
       </div>
       <ItemsList
         list={list}
