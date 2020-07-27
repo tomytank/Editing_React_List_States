@@ -58,7 +58,7 @@ export default function App() {
     const sortProperty2 =
       sortProperty === "date"
         ? "name"
-        : property === "category"
+        : sortProperty === "category"
         ? "name"
         : "date";
     //console.log("property2 is ", property2);
